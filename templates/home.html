@@ -40,13 +40,14 @@
                         <div class="card-body">
                             {{ task.task }}
                             <span style="position: relative; float: right;">
-                                <button class="btn btn-success"><i
+                                <a href="{% url 'markComplete' task.id %}"
+                                    class="btn btn-success"><i
                                         class="fa fa-check"></i> Mark as
-                                    Done</button>
-                                <button class="btn btn-danger"><i
-                                        class="fa fa-trash"></i></button>
-                                <button class="btn btn-primary"><i
-                                        class="fa fa-pencil"></i></button>
+                                    Done</a>
+                                <a href="{% url 'deleteTask' task.id %}" class="btn btn-danger"><i
+                                        class="fa fa-trash"></i></a>
+                                <a href="{% url 'editTask' task.id %}" class="btn btn-primary"><i
+                                        class="fa fa-pencil"></i></a>
                             </span>
                         </div>
                     </div>
@@ -55,27 +56,40 @@
                 <div class="col-md-5 col-lg-5">
                     <h5>Completed Tasks</h5>
                     <!-- List of all the tasks that have completed -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-6 p-0"
-                    style="position: absolute; bottom: 50px;">
-                    <!-- To Do Form -->
-                        <form action="{% url 'addTasks' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <span style="display: flex;">
-                                <input type="text" name="task"
-                                    class="form-control"
-                                    placeholder="Add a task">
-                                <button type="submit" class="btn btn-primary"
-                                    style="width: 200px;"><i
-                                        class="fa fa-plus"></i> Add</button>
+                    {% for task in completed_tasks %}
+                    <div class="card m-1">
+                        <div class="card-body">
+                            {{ task.task }}
+                            <span style="position: relative; float: right;">
+                                <a href="{% url 'markinComplete' task.id %}"
+                                    class="btn btn-danger"><i
+                                        class="fa fa-times"></i> Mark as
+                                    UnDone</a>
                             </span>
                         </div>
-                    </form>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 p-0"
+                        style="position: absolute; bottom: 50px;">
+                        <!-- To Do Form -->
+                        <form action="{% url 'addTasks' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <span style="display: flex;">
+                                    <input type="text" name="task"
+                                        class="form-control"
+                                        placeholder="Add a task">
+                                    <button type="submit"
+                                        class="btn btn-primary"
+                                        style="width: 200px;"><i
+                                            class="fa fa-plus"></i> Add</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </body>
-</html>
+        </body>
+    </html>
