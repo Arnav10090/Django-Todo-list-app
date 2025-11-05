@@ -1,19 +1,23 @@
 # Django Todo List App
 
-A simple Todo List web application built with Django. This repository contains a minimal Django project that demonstrates creating, completing, and deleting todo items with a small, easily-modified codebase.
+A simple Todo List web application built with Django. This project demonstrates creating, completing, and managing todo items with a clean and user-friendly interface.
 
 ## Quick summary
 
-- Framework: Django (project includes a local `env/` with Django installed)
+- Framework: Django 5.2.7 (project includes a local `env/` with Django installed)
 - Database: SQLite (`db.sqlite3`)
-- Purpose: Learning/demo app for Django basics — views, templates, simple CRUD
+- Frontend: Bootstrap 5.3 with Font Awesome icons
 
 ## Features
 
-- Add new todo items
-- Mark items as complete
-- Delete items
-- Simple home page rendering: see `templates/home.html`
+- Add new todo items with a simple input form
+- Mark items as complete with a single click
+- View completed tasks in a separate section
+- Edit existing tasks
+- Delete tasks
+- Clean and responsive Bootstrap UI
+- Date display showing current day
+- Scrollable task lists for better organization
 
 ## Tech stack
 
@@ -25,11 +29,14 @@ A simple Todo List web application built with Django. This repository contains a
 
 - `manage.py` — Django management script
 - `todo_project/` — Django project module (settings, urls, views, wsgi/asgi)
-- `templates/` — HTML templates (e.g. `templates/home.html`)
+- `todo/` — Main application module containing models, views, and URLs
+- `templates/` — HTML templates
+  - `home.html` — Main page template with task list and form
+  - `edit_task.html` — Template for editing tasks
 - `db.sqlite3` — SQLite database used in development
-- `env/` — (optional) virtual environment included in the repo
+- `env/` — Virtual environment with project dependencies
 
-If you open the repository you'll find the main app logic inside `todo_project/` and the template(s) under `templates/`.
+The application follows a standard Django project structure with the main application logic in the `todo/` directory and templates in the `templates/` directory.
 
 ## Prerequisites
 
